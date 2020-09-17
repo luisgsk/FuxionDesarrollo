@@ -93,7 +93,7 @@ echo '</script>';
             url: ruta,
             dataType: "json",
             type: "get",
-            beforeSend: function() {},
+            beforeSend: function(xhr) {xhr.setRequestHeader('api_key', '$2y$10$c.1XGUOfVL2HUAGCkGzT5u1cmyDRdZ7SpaWRme0nk9d9xtg8y85mu');},
             success: function(response) {
                 //console.log(response);
 
