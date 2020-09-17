@@ -542,7 +542,7 @@ echo '</script>';
                         $('#footer-linea').hide(); //escondo palabra LÍNEA
                     } //end else
                     /*======================================================================*/
-                    $('#icon-footer').attr('src', '<?php echo asset('images/icons/icon - limpia.png') ?>');
+                    $('#icon-footer').attr('src', '<?php echo asset('images/icons/icon-limpia.png') ?>');
                     $('#footer').css("background-color", "#95c11f");
 
                     break;
