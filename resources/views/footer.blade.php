@@ -290,8 +290,8 @@ echo '</script>';
         verticalCentered: true,
         menu: '#main-nav',
         css3: true,
-        resetSlidersKey: 'aS5pYnJsYXRhbS5jb21fNTJZY21WelpYUlRiR2xrWlhKejlZQw==',
-        resetSliders: true,
+        //resetSlidersKey: 'aS5pYnJsYXRhbS5jb21fNTJZY21WelpYUlRiR2xrWlhKejlZQw==',
+        //resetSliders: true,
         scrollingSpeed: 1100,
         normalScrollElements: '#cd-cart,.modal-dialog',
 
