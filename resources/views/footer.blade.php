@@ -53,6 +53,13 @@ echo 'var clienteid = "' . $datos["token"] . '";';
 echo 'var orden     = "' . $datos["orden"] . '";';
 echo 'var pais      = "' . $datos["pais"] . '";';
 echo '</script>';
+
+if($datos["pais"] == 'cl' || 'gt'){
+    echo '<script>';
+    echo 'var pais = "EC"';    
+    echo '</script>';
+    $datos["pais"] = 'EC';    
+}
 ?>
 <script>
     lazyload(); //Activo LazyLoad

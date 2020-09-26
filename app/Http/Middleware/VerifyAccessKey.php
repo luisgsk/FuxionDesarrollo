@@ -16,7 +16,7 @@ class VerifyAccessKey
     public function handle($request, Closure $next)
     {
         //Si el request es setlog/
-        if ($request->is('setlog/*')) {
+        if ($request->is('public/setlog/*')) {
             // Obtenemos el api-key que el usuario envia
             $key = $request->headers->get('api_key');
             // Si coincide con el valor almacenado en la aplicacion

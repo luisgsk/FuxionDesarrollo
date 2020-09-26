@@ -1,6 +1,5 @@
 <?php
 /*$trazabilidad = CatalogoController::trazabilidad($service[0]->session_id,'prueba','prueba','prueba');*/
-
 use App\Http\Controllers\CatalogoController;
 
 date_default_timezone_set('America/Santiago');
@@ -100,7 +99,8 @@ $_SESSION['session_id']  = $service[0]->session_id;
   if ($datos["pais"] == 'pe') {
     echo 'var simboloPais = "S./ ";';
   } else {
-    echo 'var simboloPais = "' . $productos[0]->simbolo . ' ";';
+    $key = key($simbolo);//Obtengo first array
+    echo 'var simboloPais = "'.$simbolo[$key]["simbolo"].' ";';
   } //end if for simbol
   //echo 'var simboloPais = " '.$productos[0]->simbolo.' ";';
   //Variable para las cabeceras del carrito

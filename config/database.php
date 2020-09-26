@@ -85,7 +85,7 @@ return [
             'port' => env('DB_PORT', '1433'),
             'database' => env('DB_DATABASE', 'omni'),
             'username' => env('DB_USERNAME', 'luis.valbuena'),
-            'password' => env('DB_PASSWORD', 'Ibr2019'),
+            'password' => env('DB_PASSWORD', '*Canserbero4l'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
