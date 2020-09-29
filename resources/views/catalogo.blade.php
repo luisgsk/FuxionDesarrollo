@@ -99,10 +99,10 @@ $_SESSION['session_id']  = $service[0]->session_id;
   if ($datos["pais"] == 'pe') {
     echo 'var simboloPais = "S./ ";';
   } else {
-    $key = key($simbolo);//Obtengo first array
-    echo 'var simboloPais = "'.$simbolo[$key]["simbolo"].' ";';
+    //$key = key($simbolo);//Obtengo first array
+    //echo 'var simboloPais = "'.$simbolo[$key]["simbolo"].' ";';
+    echo 'var simboloPais = " '.$productos[0]->simbolo.' ";';
   } //end if for simbol
-  //echo 'var simboloPais = " '.$productos[0]->simbolo.' ";';
   //Variable para las cabeceras del carrito
   echo "var pais_cart = '" . $datos["pais"] . "';";
   echo 'console.log("ordenVista: ' . $datos["orden"] . '");';

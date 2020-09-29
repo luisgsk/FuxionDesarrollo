@@ -36,12 +36,11 @@ class CatalogoController extends Controller
           de los productos desde la base de datos y le paso
           el array $productos a la vista.
           ================================================*/
-      //$sql_productos = 'SET NOCOUNT ON ; exec SP_GET_DATA_PRODUCTOS_OMNI_FUXION "'.$pais.'" ';
-      //$productos = DB::select($sql_productos);
-      $simbolo = Simbolo::all()->where('pais', strtoupper($pais))->toArray();
-      $productos = Producto::all()->where('pais', strtoupper($pais));
-      //return view('catalogo')->with('datos', $datos);
-      return view('catalogo', compact('datos', 'service', 'productos', 'simbolo'));
+      $sql_productos = 'SET NOCOUNT ON ; exec SP_GET_DATA_PRODUCTOS_OMNI_FUXION "'.$pais.'" ';
+      $productos = DB::select($sql_productos);
+      //$simbolo = Simbolo::all()->where('pais', strtoupper($pais))->toArray();
+      //$productos = Producto::all()->where('pais', strtoupper($pais))->union($simbolo);
+      return view('catalogo', compact('datos', 'service', 'productos'));
     }
   } //end index()
 
