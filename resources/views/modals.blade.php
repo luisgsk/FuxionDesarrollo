@@ -79,7 +79,7 @@ foreach ($productos as $key => $value) {
 
     <div class="row">
         <div class="col-9">
-        <p style="color:#000;" class="scandia-bold"><?php echo $value->slogan_info; ?></p>
+        <p style="color:#<?php echo $value->color_hex; ?>;" class="scandia-bold"><?php echo $value->slogan_info; ?></p>
         </div>
     </div>
         <!---------------------------------------------------------------------------------------------------------------------------->

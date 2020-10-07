@@ -8,7 +8,7 @@ foreach ($productos as $key => $value) {
               correctamente. ya que el resto de productos solo tiene 2 variaciones
               y la lógica está hecha para productos pares.
               ==================================================================*/  
-  if($value->sku == 144170){$i = $i-1;/*resto 1 al tercer producto de ProteinXoup para cerrar footer.*/}  
+  if($value->sku == 144170 || $value->sku == 142457){$i = $i-1;/*resto 1 al tercer producto de ProteinXoup para cerrar footer.*/}  
   $nombre_producto = explode('-',$value->nombre);  
 
             /*========================================================================
@@ -70,7 +70,7 @@ foreach ($productos as $key => $value) {
             /*========================================================================
               Si $i es par [Segundo de cada producto], cierro el footer del modal.
               ======================================================================*/
-        if ($i%2==0 && $value-> sku != 144171/*En el segundo de los tre producto ProteinXoup no cierro footer*/){ ?>
+        if ($i%2==0 && $value-> sku != 144171 && $value-> sku != 142455/*En el segundo de los tre producto ProteinXoup no cierro footer*/){ ?>
 <!-- ================================================Footer Modal <?php echo $nombre_producto[0] ?>============================================== -->
       </div> <!-- end modal-body -->
       <div class="modal-footer">

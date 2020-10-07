@@ -1,5 +1,4 @@
 <?php
-/*$trazabilidad = CatalogoController::trazabilidad($service[0]->session_id,'prueba','prueba','prueba');*/
 use App\Http\Controllers\CatalogoController;
 
 date_default_timezone_set('America/Santiago');
@@ -44,16 +43,8 @@ $_SESSION['session_id']  = $service[0]->session_id;
   <link rel="stylesheet" type="text/css" href="<?php echo asset('shop_min.css') ?>" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-
   <!-- Style personalizado -->
-  <?php
-  if ($datos["pais"] == 'pe') {
-    echo '<link rel="stylesheet" type="text/css" href="' . asset('omnistylePeru.css?v35') . '" />';
-  } else {
-    echo '<link rel="stylesheet" type="text/css" href="' . asset('omnistyle.css?v57') . '" />';
-  }
-  ?>
+  <link rel="stylesheet" type="text/css" href="<?php echo asset('omnistyle.css?v57') ?>" />
   <!--[if IE]>
     <script type="text/javascript">
        var console = { log: function() {} };
@@ -101,26 +92,16 @@ $_SESSION['session_id']  = $service[0]->session_id;
 <meta name="msapplication-TileImage" content="<?php echo asset('favicon/ms-icon-144x144.png') ?>">
 <meta name="theme-color" content="#ffffff">
 </head>
-
+<!--  descomentar las lineas para evitar 
+      click derecho y opciones desarrollador 
+      en navegador.                          -->
 <body class="foo" oncontextmenu="/*return false*/" onkeydown="/*return false*/">
   <div class="loader">
     <span class="scandia-regular" id="text-loader" style="text-align: center!important;"></span>
   </div>
   <?php
   echo '<script>';
-  /*=================================================
-  	De momento no traigo dinamicamente la variable
-  	simboloPais ya que perú no está adaptado
-  	al modelo.
-    ================================================*/
-  //Establezo simbolo pais para visualizarse en carrito [archivo simpleCart.js]
-  if ($datos["pais"] == 'pe') {
-    echo 'var simboloPais = "S./ ";';
-  } else {
-    //$key = key($simbolo);//Obtengo first array
-    //echo 'var simboloPais = "'.$simbolo[$key]["simbolo"].' ";';
-    echo 'var simboloPais = " '.$productos[0]->simbolo.' ";';
-  } //end if for simbol
+  echo 'var simboloPais = " '.$productos[0]->simbolo.' ";';
   //Variable para las cabeceras del carrito
   echo "var pais_cart = '" . $datos["pais"] . "';";
   echo 'console.log("ordenVista: ' . $datos["orden"] . '");';
@@ -140,8 +121,6 @@ $_SESSION['session_id']  = $service[0]->session_id;
   echo '</script>'
   ?>
 
-
-  <!--<div style="position:fixed;top:50px;left:50px;color:white;z-index:999;" id="callbacksDiv"></div>-->
   <!-- ================================================ Header  ============================================== -->
   <header id="header">
     <!-- logo -->
@@ -173,20 +152,6 @@ $_SESSION['session_id']  = $service[0]->session_id;
 
   <!-- ================================================ Modals  ============================================== -->
   <?php
-  /*=================================================
-	Ya que perú por ahora no está adaptado al modelo
-	de datos Dinámico, condiciono el include del
-	Modal.
-	================================================*/
-  if ($datos["pais"] == 'pe') { ?>
-    @include('modalsPeru')
-  <?php
-  } //end if peru
-  else { ?>
-    @include('modals')
-    @include('modalsVariable')
-
-  <?php
 
     /*==============================================================
   Relleno el Array $lineas_pais con las líneas correspondientes
@@ -198,125 +163,20 @@ $_SESSION['session_id']  = $service[0]->session_id;
       array_push($lineas_pais, $value->linea);
     } //end foreach
 
-  } //end else if not peru
+  /*==============================================================
+  Se incluye modals de info de productos y seleccion de
+  variaciones.
+  ==============================================================*/
   ?>
+  @include('modals')
+  @include('modalsVariable')
   <!-- ================================================ Page content  ============================================== -->
   <div id="fullpage">
 
     <?php
-    /*=================================================
-	Ya que perú por ahora no está adaptado al modelo
-	de datos Dinámico, condiciono el include de las
-	páginas de producto.
-	================================================*/
     $orden = $datos["orden"];
 
-    if ($datos["pais"] == 'pe') {
-
-      switch ($orden) {
-
-        case 1: //Limpia
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 2: //regenera
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 3: //Revitaliza
-
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 4: //Inmunologica
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 5: //Controlpeso
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 6: //Antiedad
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 7: //Vigormental
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-
-        case 8: //Sport
-          include('paginasCatalogoPeru/sport.php');
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          break;
-
-        default: //Default Limpia
-          include('paginasCatalogoPeru/limpia.php');
-          include('paginasCatalogoPeru/regenera.php');
-          include('paginasCatalogoPeru/revitaliza.php');
-          include('paginasCatalogoPeru/inmunologica.php');
-          include('paginasCatalogoPeru/controlpeso.php');
-          include('paginasCatalogoPeru/antiedad.php');
-          include('paginasCatalogoPeru/vigormental.php');
-          include('paginasCatalogoPeru/sport.php');
-          break;
-      } //end switch
-    } else {
-      switch ($orden) {
+    switch ($orden) {
 
         case 1: //Limpia
           include('paginasCatalogo/limpia.php');
@@ -418,28 +278,7 @@ $_SESSION['session_id']  = $service[0]->session_id;
           include('paginasCatalogo/sport.php');
           break;
       }
-    } //end else peru
     ?>
   </div>
-
-  <?php
-  /*=================================================
-	Ya que perú por ahora no está adaptado al modelo
-	de datos Dinámico, condiciono el include del
-	Footer.
-	================================================*/
-  if ($datos["pais"] == 'pe') {
-    ///////////////////////////////////////////////////
-  ?>
-    @include('footerPeru')
-  <?php
-    /////////////////////////////////////////////////// 
-  } //end if peru
-  else {
-    ///////////////////////////////////////////////////
-  ?>
-    @include('footer')
-  <?php
-    ///////////////////////////////////////////////////
-  } //end else
-  ?>
+  @include('footer')
+ 

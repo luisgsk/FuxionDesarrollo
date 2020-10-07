@@ -28,7 +28,7 @@ class CatalogoController extends Controller
           Si el País es Peru, por ahora NO traigo el arreglo
           de datos de productos de la Base de datos.
           ================================================*/
-    if ($pais == 'pe') {
+    if ($pais == 'pex') {
       return view('catalogo', compact('datos', 'service'));
     } else {
       /*=================================================
